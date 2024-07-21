@@ -59,7 +59,6 @@ int main()
     al_init_acodec_addon();
 
     ALLEGRO_FONT* font;
-    font = al_create_builtin_font();
 
     //al_set_new_display_flags(ALLEGRO_FULLSCREEN);
     display = al_create_display(800,600);
@@ -72,7 +71,7 @@ int main()
     ALLEGRO_TIMER* timer;
     timer = al_create_timer(1.0 / 60.0);
     queue = al_create_event_queue();
-
+    font = al_create_builtin_font();
     al_register_event_source(queue, al_get_keyboard_event_source());
     al_register_event_source(queue, al_get_display_event_source(display));
     al_register_event_source(queue, al_get_timer_event_source(timer));
@@ -94,6 +93,7 @@ int main()
     int pos_y = 1;
 
     bool exit_game = false;
+    memset(key, 0, sizeof(key));
     while(!exit_game) {
         al_wait_for_event(queue, &event);
         al_clear_to_color(al_map_rgb(0, 0, 0));
@@ -115,6 +115,9 @@ int main()
                 break;
             case ALLEGRO_EVENT_KEY_UP: // Key up
                 if(key[ALLEGRO_KEY_A]) {
+                }
+                if(key[ALLEGRO_KEY_ESCAPE]) {
+                    exit_game = true;
                 }
                 key[event.keyboard.keycode] &= KEY_RELEASED;
                 break;
