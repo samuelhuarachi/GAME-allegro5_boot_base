@@ -94,6 +94,9 @@ int main()
 
     bool exit_game = false;
     memset(key, 0, sizeof(key));
+
+    // al_reserve_samples(1); -> As audio is added, increase this value. Otherwise, dont sound be reproduced.
+
     while(!exit_game) {
         al_wait_for_event(queue, &event);
         al_clear_to_color(al_map_rgb(0, 0, 0));
