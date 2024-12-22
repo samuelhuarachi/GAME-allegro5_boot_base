@@ -1,3 +1,5 @@
-Bootstrap do allegro 5
+Boostrap base to begin make games using allegro 5.
 
-Inicio básico para iniciar programação de jogo
+All pre configure is started.
+
+Enjoy.
